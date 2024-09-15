@@ -8,7 +8,7 @@ import {
     useRouteError,
 } from '@remix-run/react';
 import { useEffect } from 'react';
-import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
+import { SiteWrapper } from '../src/components/site-wrapper/site-wrapper';
 import { ROUTES } from '~/router/config';
 import '~/styles/index.scss';
 
@@ -32,9 +32,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
     return (
-        <SiteWrapper>
+        <div>
             <Outlet />
-        </SiteWrapper>
+        </div>
     );
 }
 

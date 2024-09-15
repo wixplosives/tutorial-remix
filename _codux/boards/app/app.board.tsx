@@ -2,7 +2,7 @@ import { createBoard } from '@wixc3/react-board';
 import { createRemixStub } from '@remix-run/testing';
 import App from 'app/root';
 import HomePage from 'app/routes/_index/route';
-import AboutPage from 'app/routes/about/route';
+import { ROUTES } from '~/router/config';
 
 const AppWrapper = createRemixStub([
     {
@@ -11,12 +11,8 @@ const AppWrapper = createRemixStub([
         },
         children: [
             {
-                path: '/',
+                path: ROUTES.home.path,
                 Component: HomePage,
-            },
-            {
-                path: '/about',
-                Component: AboutPage,
             },
         ],
     },

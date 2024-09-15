@@ -1,48 +1,19 @@
 @import '@styles/theme.module.scss';
 
 .root {
-    font: $large-font;
+    margin: 0 auto;
+    padding: 2.3em 3em 2em;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    row-gap: 0.5em;
-    background-color: $snow-white;
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
-.title {
-    font: $title-font;
-    text-align: center;
-    letter-spacing: 0.4rem;
-
-    @media only screen and (max-width: $mobile-width) {
-        font-size: 3rem;
-    }
+    border: 2px dashed #888888;
+    border-radius: 30px;
 }
 
 .paragraph {
-    text-align: center;
+    font-size: 12px;
+    margin-top: 80px;
     display: flex;
+    gap: 3px;
     justify-content: center;
-    margin-bottom: 1.5em;
-    font: $paragraph-font;
-
-    @media only screen and (max-width: $mobile-width) {
-        font-size: 1rem;
-    }
-}
-
-.text {
-    width: 60%;
-}
-
-.button {
-    align-self: center;
-}
-
-.image {
-    align-self: center;
-    height: 14em;
-    margin-top: 1em;
-    width: 24em;
 }
