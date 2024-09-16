@@ -8,7 +8,6 @@ import {
     useRouteError,
 } from '@remix-run/react';
 import { useEffect } from 'react';
-import { SiteWrapper } from '../src/components/site-wrapper/site-wrapper';
 import { ROUTES } from '~/router/config';
 import '~/styles/index.scss';
 
