@@ -13,7 +13,7 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 export default function HomePage() {
     return (
         <div className={styles.root}>
-            <h2>Welcome to your App Component 🎉</h2>
+            <h2>Welcome to your App Homepage 🎉</h2>
             <span>
                 Double click to edit App component
                 <br />
