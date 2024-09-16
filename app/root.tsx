@@ -6,9 +6,9 @@ import {
     ScrollRestoration,
     isRouteErrorResponse,
     useRouteError,
+    useNavigate,
 } from '@remix-run/react';
-import { useEffect } from 'react';
-import { SiteWrapper } from '~/components/site-wrapper/site-wrapper';
+import { useEffect, useRef } from 'react';
 import { ROUTES } from '~/router/config';
 import '~/styles/index.scss';
 
@@ -32,44 +32,28 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
     return (
-        <SiteWrapper>
+        <div>
             <Outlet />
-        </SiteWrapper>
+        </div>
     );
 }
 
 export function ErrorBoundary() {
-    const error = useRouteError();
-
-    const isRouteError = isRouteErrorResponse(error);
+    const locationRef = useRef<string | undefined>(
+        typeof window !== 'undefined' ? window.location.href : undefined
+    );
 
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { title, message } = getErrorDetails(error);
+        const interval = setInterval(() => {
+            if (window.location.href !== locationRef.current) {
+                locationRef.current = window.location.href;
+                clearInterval(interval);
+                // force full page reload after navigating from error boundary
+                // to fix remix issue with style tags disappearing
+                window.location.reload();
+            }
+        }, 100);
+    }, []);
 
-        // hack to handle https://github.com/remix-run/remix/issues/1136
-        window.location.href = ROUTES.error.to(title, message);
-    }, [isRouteError, error]);
-
-    // we are navigating to the error page in the effect above
-    return null;
-}
-
-function getErrorDetails(error: unknown) {
-    let title: string;
-    let message: string | undefined;
-
-    if (isRouteErrorResponse(error)) {
-        if (error.status === 404) {
-            title = 'Page Not Found';
-            message = "Looks like the page you're trying to visit doesn't exist";
-        } else {
-            title = `${error.status} - ${error.statusText}`;
-            message = error.data?.message ?? '';
-        }
-    } else {
-        title = 'Unknown error ocurred';
-    }
-
-    return { title, message };
+    return <div>Error View</div>;
 }
