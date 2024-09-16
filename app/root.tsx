@@ -43,8 +43,6 @@ export function ErrorBoundary() {
         typeof window !== 'undefined' ? window.location.href : undefined
     );
 
-    const error = useRouteError();
-
     useEffect(() => {
         const interval = setInterval(() => {
             if (window.location.href !== locationRef.current) {
@@ -57,32 +55,5 @@ export function ErrorBoundary() {
         }, 100);
     }, []);
 
-    const navigate = useNavigate();
-
-    const isPageNotFoundError = isRouteErrorResponse(error) && error.status === 404;
-
     return <div>Error View</div>;
-}
-
-function toError(value: unknown): Error {
-    if (value instanceof Error) {
-        return value;
-    }
-
-    if (typeof value === 'undefined') {
-        return new Error();
-    }
-
-    let errorMessage = String(value);
-    if (typeof value === 'object' && value !== null) {
-        if ('message' in value) {
-            errorMessage = String(value.message);
-        }
-
-        if ('data' in value) {
-            errorMessage = String(value.data);
-        }
-    }
-
-    return new Error(errorMessage);
 }
