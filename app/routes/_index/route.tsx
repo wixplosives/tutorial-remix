@@ -5,6 +5,7 @@ import commonStyles from '~/styles/common-styles.module.scss';
 import { getUrlOriginWithPath } from '~/utils';
 import TypescriptSvg from '../../../src/assets/svg/typescript.svg';
 import ViteSvg from '../../../src/assets/svg/vite.svg';
+import { Lesson01 } from '../../../src/components/lessons/01/lesson-01';
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
     return { canonicalUrl: getUrlOriginWithPath(request.url) };
@@ -12,18 +13,9 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 
 export default function HomePage() {
     return (
-        <div className={styles.root}>
-            <h2>Welcome to your App Homepage 🎉</h2>
-            <span>
-                Double click to edit App component
-                <br />
-                &amp; drag here elements from + Add <b>Elements</b> Panel
-            </span>
-            <p className={styles.paragraph}>
-                This project is using <img src={ViteSvg} width="12" />+
-                <img src={TypescriptSvg} width="12" />
-                Visit vitejs.dev to learn more.{' '}
-            </p>
+        <div>
+            <h1>helllllo</h1>
+            <Lesson01 />
         </div>
     );
 }
