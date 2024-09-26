@@ -1,5 +1,7 @@
 import styles from './task-tag.module.scss';
 import { TaskSymbol } from '../task-symbol/task-symbol';
+import divSymbol from '~/assets/div-symbol.svg';
+import chevronSymbol from '~/assets/chevron-symbol.svg';
 
 type TypeName = 'stage' | 'stage-comp' | 'tree' | 'selector';
 
@@ -12,8 +14,8 @@ export interface TaskTagProps {
 export const TaskTag = ({ chevron = false, type, children }: TaskTagProps) => {
     return (
         <span className={styles[type]}>
-            {chevron && <TaskSymbol name="chevron" />}
-            {type === 'tree' && <TaskSymbol name="div" />}
+            {chevron && <img src={chevronSymbol} />}
+            {type === 'tree' && <img src={divSymbol} />}
             {children}
         </span>
     );

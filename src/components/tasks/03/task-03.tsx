@@ -11,13 +11,12 @@ export const Task03 = () => {
             <div className={styles.title}>Add Elements</div>
             <ol start={0} className={styles.desc}>
                 <li>
-                    The <b>Add Elements Panel</b> lets you add new HTML elements
-                    and components. You can find it on the <b>Elements Panel</b>
-                    . Let’s add the missing pupil to fix this bauhaus poster.
+                    The <b>Add Elements Panel</b> lets you add new HTML elements and components. You
+                    can find it on the <b>Elements Panel</b>. Let’s add the missing pupil to fix
+                    this bauhaus poster.
                 </li>
                 <li>
-                    On the <b>Elements Panel</b>, hover over <br />{' '}
-                    <TaskSymbol name="component" />
+                    On the <b>Elements Panel</b>, hover over <br /> <TaskSymbol name="component" />
                     <b>Lesson03</b> and <TaskSymbol name="edit" /> edit it.
                 </li>
                 <li>
@@ -30,8 +29,8 @@ export const Task03 = () => {
                     Finally, drag it from the <b>Add Elements Panel</b> into{' '}
                     <TaskTag type="tree">div.eye.top</TaskTag>
                     on the <br />
-                    <b>Elements Panel</b>. You can also drag it directly into
-                    the top eye, on the stage.
+                    <b>Elements Panel</b>. You can also drag it directly into the top eye, on the
+                    stage.
                 </li>
             </ol>
         </div>

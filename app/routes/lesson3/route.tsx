@@ -1,27 +1,53 @@
-import classNames from 'classnames';
-import styles from './_index.module.scss';
-import { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
-import { useState } from 'react';
-import type { ColorName } from '../../../src/globals/colors';
-import { Box } from '~/components/common/box/box';
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
+import styles from './lesson-03.module.scss';
+import { useEffect, useState } from 'react';
 import { ConfettiFx } from '~/components/fx/confetti-fx/confetti-fx';
-import { CursorFx } from '~/components/fx/cursor-fx/cursor-fx';
-import { Task01 } from '~/components/tasks/01/task-01';
-import { TaskSymbol } from '~/components/common/task-symbol/task-symbol';
-import { Link } from '@remix-run/react';
 import { getUrlOriginWithPath } from '~/utils';
+import { Task03 } from '~/components/tasks/03/task-03';
+import { Pupil } from '~/components/lessons/pupil/pupil';
+import classNames from 'classnames';
+import { Pupil as Pupil0 } from '../../../src/components/lessons/pupil/pupil';
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
     return { canonicalUrl: getUrlOriginWithPath(request.url) };
 };
+export default function Lesson3() {
+    const [lessonSolved, setLessonSolved] = useState(false);
 
-export default function HomePage() {
+    useEffect(() => {
+        setLessonSolved(isSolved());
+    }, []);
+
     return (
         <div className={styles.root}>
-            <Link to="/lesson01">Lesson 1</Link>
-            <Link to="/lesson02">Lesson 2</Link>
+            <Task03 />
+            <div className={styles.playground}>
+                <div id="top" className={`${styles.eye} ${styles.top}`}>
+                    <Pupil0 />
+                </div>
+                <div id="bottom" className={`${styles.eye} ${styles.bottom}`}>
+                    <Pupil color={'hotRed'} />
+                </div>
+                <ConfettiFx
+                    maxParticles={400}
+                    dissolve={315}
+                    show={lessonSolved}
+                    style={{ display: lessonSolved ? 'block' : 'none' }}
+                />
+            </div>
         </div>
     );
+}
+
+function isSolved(): boolean {
+    return isPupil('top') && isPupil('bottom');
+}
+
+function isPupil(id: string): boolean {
+    const elem = document.getElementById(id);
+    return elem?.firstElementChild !== null
+        ? !!elem?.firstElementChild.getAttribute('data-pupil')
+        : false;
 }
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
@@ -71,16 +97,6 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
         {
             name: 'twitter:image',
             content: imageUrl,
-        },
-    ];
-};
-
-export const links: LinksFunction = () => {
-    return [
-        {
-            rel: 'icon',
-            href: '/favicon.ico',
-            type: 'image/ico',
         },
     ];
 };

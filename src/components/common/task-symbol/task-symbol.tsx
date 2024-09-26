@@ -1,6 +1,6 @@
 import styles from './task-symbol.module.scss';
-import type { SymbolName } from './symbols';
-import { symbols } from './symbols';
+import { symbols, SymbolName } from './symbols';
+import classNames from 'classnames';
 
 export interface TaskSymbolProps {
     name?: SymbolName;

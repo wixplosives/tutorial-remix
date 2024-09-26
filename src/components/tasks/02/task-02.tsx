@@ -1,6 +1,8 @@
 import styles from './task-02.module.scss';
 import { TaskSymbol } from '../../common/task-symbol/task-symbol';
 import { TaskTag } from '../../common/task-tag/task-tag';
+import componentSymbol from '~/assets/component-symbol.svg';
+import editSymbol from '~/assets/edit-symbol.svg';
 
 export const Task02 = () => {
     return (
@@ -12,29 +14,25 @@ export const Task02 = () => {
             <ol start={0} className={styles.desc}>
                 <li>
                     {' '}
-                    The <b>Elements Panel</b>, on the left, represents the
-                    component's structure. It contains both HTML elements and
-                    components. <br />
-                    To re-arrange the structure, you can drag elements on the
-                    panel. Let's see how to put these numbers in the correct
-                    order.
+                    The <b>Elements Panel</b>, on the left, represents the component's structure. It
+                    contains both HTML elements and components. <br />
+                    To re-arrange the structure, you can drag elements on the panel. Let's see how
+                    to put these numbers in the correct order.
                 </li>
                 <li>
                     {' '}
-                    To see the structure of this component, hover over{' '}
-                    <TaskSymbol name="component" />
-                    <b>Lesson02</b> and <TaskSymbol name="edit" /> edit it.
+                    To see the structure of this component, hover over <img src={componentSymbol} />
+                    <b>Lesson02</b> and <img src={editSymbol} /> edit it.
                 </li>
                 <li>
                     {' '}
-                    Take a look at the different elements of the component to
-                    understand its structure.
+                    Take a look at the different elements of the component to understand its
+                    structure.
                 </li>
                 <li>
                     {' '}
-                    Now, drag the <TaskTag type="tree">div.row</TaskTag>{' '}
-                    elements on the <b>Elements Panel</b> as needed to
-                    re-arrange the numbers in the correct order.
+                    Now, drag the <TaskTag type="tree">div.row</TaskTag> elements on the{' '}
+                    <b>Elements Panel</b> as needed to re-arrange the numbers in the correct order.
                 </li>
             </ol>
         </div>

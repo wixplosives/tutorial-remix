@@ -13,8 +13,8 @@
   "safeRender": {
     "maxInstancesPerComponent": 1000
   },
-  "scripts": {
-    "install": {
+  "install": {
+    "scripts": {
       "title": "Install",
       "description": "Run install",
       "command": "npm i",
@@ -25,7 +25,7 @@
     "solution": "scss modules"
   },
   "styleFilesConfig": {
-    "commonStyleFilePattern": "**/src/styles/**"
+    "commonStyleFilePattern": "**/variables.module.scss"
   },
   "resolve": {
     "alias": {
